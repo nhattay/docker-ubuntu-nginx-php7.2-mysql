@@ -26,11 +26,11 @@ RUN docker-php-ext-configure bcmath \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 
-#COPY xdebug-2.5.4.tgz /usr/src/php/ext/xdebug.tgz
-#RUN tar -xf /usr/src/php/ext/xdebug.tgz -C /usr/src/php/ext/ && \
-#    rm /usr/src/php/ext/xdebug.tgz && \
-#    docker-php-ext-install xdebug-2.5.4
-#COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY xdebug-2.6.0.tgz /usr/src/php/ext/xdebug.tgz
+RUN tar -xf /usr/src/php/ext/xdebug.tgz -C /usr/src/php/ext/ && \
+    rm /usr/src/php/ext/xdebug.tgz && \
+    docker-php-ext-install xdebug-2.6.0
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # to include ioncube support, uncomment the next two lines
 #COPY ioncube/ioncube_loader_lin_7.1.so /usr/local/lib/php/extensions/no-debug-non-zts-20160303/ioncube_loader_lin_7.1.so

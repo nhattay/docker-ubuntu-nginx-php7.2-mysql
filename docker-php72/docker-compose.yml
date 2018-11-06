@@ -20,6 +20,7 @@ phpfpm:
   volumes:
     - ./php/phpfpm.conf:/usr/local/etc/php-fpm.d/www.conf
     - ./logs/php:/var/log/php
+    - ./php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
   volumes_from:
     - project
   extra_hosts:
@@ -39,9 +40,9 @@ mysql:
     - ./databases:/var/lib/mysql
   environment:
     MYSQL_ROOT_PASSWORD: secret_password
-    MYSQL_DATABASE: project1
-    MYSQL_USER: project1
-    MYSQL_PASSWORD: a123456
+    MYSQL_DATABASE: docker_db
+    MYSQL_USER: docker_db
+    MYSQL_PASSWORD: 123456
 
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
